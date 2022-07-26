@@ -1,0 +1,69 @@
+{% extends 'adminbase.html' %}
+
+{% block content %}
+
+<div class="container bg-light">
+    <h1 class="text-center">SHOW STUDENTS DETAILS</h1>
+    <table class="table table-stribed">
+        <thead>
+            <tr>
+                <th>sl.NO</th>
+                <th>Name</th>
+                <th>from date</th>
+                <th>to date</th>
+                <th>status</th>
+                <th>reason</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in std %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{i.user}}</td>
+
+                <td>{{ i.from_date|date:'Y-m-d' }}</td>
+                
+                <td>{{ i.to_date|date:'Y-m-d' }}</td>
+                <td>{{ i.reason}}</td>
+                <td>{{ i.leave_status  }}</td>
+                <td>
+                    {% if i.status == "pending" %}
+                    <a href="{% url 'Admin_approve' i.id %}">
+                        <button type="submit" class="btn btn-sm btn-success btn-icon-text">
+                            Approve
+                        </button>
+                    </a>
+<td>
+    <a href="{% url 'Admin_reject' i.id %}">
+        <button type="submit" class="btn btn-sm btn-danger btn-icon-text">
+            Reject
+        </button>
+    </a>
+
+
+</td>
+
+{% elif i.status == "approved" %}
+<button type="submit" class="btn btn-sm btn-success btn-icon-text">
+    {{i.status}}
+</button>
+
+{% else %}
+<button type="submit" class="btn btn-sm btn-danger btn-icon-text">
+    {{i.status}}
+</button>
+</td>
+
+{% endif %}
+                
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</div>
+
+</div>
+
+{% endblock %}

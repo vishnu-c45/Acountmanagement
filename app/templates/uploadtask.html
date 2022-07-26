@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+
+
+
+
+    <title>Document</title>
+</head>
+<body>
+
+
+    <div class="container-fluid"
+ style="margin-top:10%;">
+ <div class="container bg-light">
+    
+    <form action="{% url 'uploadtask' u.id user.id %}" method="post" enctype="multipart/form-data" class="form pt-5 pb-5" style="width: 50%; margin-left:25%">
+        {% csrf_token %}
+        <label >Task</label>
+        <input type="text" name="task" value="{{ u.task }}" class="form-control"  placeholder="{{ u.task }}">
+        <label>start date</label>
+        <input type="date" name="sdate" value="{{ u.start_date|date:'Y-m-d' }}" class="form-control"  placeholder="{{ u.start_date }}">
+        <label>End date date</label>
+        <input type="date" name="edate" value="{{ u.end_date|date:'Y-m-d' }}" class="form-control"  placeholder="{{ u.end_date }}">
+        <label>Upload task</label>
+        <input type="file" name="file" class="form-control" placeholder="Enter Course"><br>
+       
+        
+
+        <button type="submit" class="btn btn-outline-info" style="margin-left: 40%;">Submit</button>
+        
+    </form>
+
+</div>
+
+</div>
+
+
+
+</body>
+</html>

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <title>Document</title>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-danger">
+        <h2 class="text-white my-2 font-weight-bold"></h2>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item active">
+              <a class="nav-link text-white" href="{% url 'adminhome' %}">Home</a>
+            </li>
+            
+            <li class="nav-item">
+              <a class="nav-link text-white" href="{% url 'addatten'  %}">ADD </a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link text-white" href="{% url 'atten' %}">VIEW </a>
+            </li>
+
+
+
+          
+            <!-- <li class="nav-item">
+                <a class="nav-link text-white" href="">About</a>
+              </li> -->
+           
+           
+            </li>
+          </ul>
+        </div>
+       
+
+
+      </nav>
+
+      {% block content %}
+
+      {% endblock %}
+
+     
+
+
+
+
+
+
+
+
+
+    <div class="container bg-light">
+        <h1 class="'text-center">SHOW ATTENDENCE</h1>
+        <table class="table table-stribed">
+            <thead>
+                <tr>
+                    <th>sl.no</th>
+                    <th>username</th>
+                    <th>date</th>>
+                    <th>status</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for i in std %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td>{{i.user}}</td>
+                    <td>{{ i.date|date:'Y-m-d' }}</td>
+                    <td>
+    
+                        {% if i.status == "PRESENT" %}
+                                          <button type="submit" class="btn btn-sm btn-success btn-icon-text">
+                                              {{i.status}}
+                                          </button>
+                      
+                                          {% elif i.status == "ABSENT" %}
+                                          <button type="submit" class="btn btn-sm btn-danger btn-icon-text">
+                                              {{i.status}}
+                                          </button>
+                                        
+                                          {% else %}
+                                          <button type="submit" class="btn btn-sm btn-warning btn-icon-text">
+                                              {{i.status}}
+                                          </button>
+                                          </td>
+                      
+                                          {% endif %}
+    
+                    
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    
+    </div>
+    
+    </div>
+
+
+  
+  
+    
+</body>
+</html>

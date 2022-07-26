@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block content%}
+
+<div
+class="bg-image"
+style="
+  background-image: url('https://agclub.com.ua/wp-content/uploads/2018/12/Fancy-Html-Page-Background-Color-88-On-Coloring-Site-with-Html-Page-Background-Color.jpg');
+  height: 100vh;">
+<div>
+
+<!-- <div class="container text-center">
+    {% for message in messages %}
+
+    <p>
+      <div class="alert-success mt-2" style="width :100% " >
+      {{message}}
+      </div>
+    {% endfor %}  
+    </p>
+
+</div> -->
+<h1 class="font-weight-bold text-center">INFOX</h1>
+
+<div class="m-5 bg-">
+  
+  <form action="{% url 'myprofile' user.id %}">
+ <button type="submit" class="btn btn-primary m-3 " style="width:300px;height:150px ;border: 1px solid;margin: 90px; " >PROFILE</button>
+  </form>
+
+<form action="{% url 'viewtask' user.id  %}">
+<button type="submit" class="btn btn-danger m-3 " style="width:300px;height:150px ;border: 1px solid " >TASK</button>
+</form>
+
+<form action="{% url 'leaveapply' user.id %}">
+<button  type="submit"  class="btn btn-success m-3 " style="width:300px;height:150px ;border: 1px solid  " >APPLY LEAVE</a></button>
+</form>
+
+</div>
+
+<!-- <img src="https://w7.pngwing.com/pngs/150/989/png-transparent-three-men-working-in-front-of-table-illustration-creativity-flat-design-creative-services-cartoon-figures-of-office-cartoon-character-television-happy-birthday-vector-images-thumbnail.png" style="width:400px ; " > -->
+
+
+
+{% endblock %}

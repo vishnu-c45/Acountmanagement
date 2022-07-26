@@ -1,0 +1,302 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+
+  .pm{
+    margin-left: 500px;
+   
+  
+  }
+  .text-left,
+  #hf {
+    font-family: rubik, sans-serif;
+    color: white;
+    font-weight: 500;
+  }
+
+
+
+
+
+
+
+  .ui-widget-content {
+    border: none;
+    background: #191c24;
+    color: #636d87;
+  }
+
+  .ui-datepicker th {
+    padding: 0.7em 0.3em;
+    text-align: center;
+    font-weight: bold;
+    border: none;
+    color: #636d87;
+  }
+
+   .ui-state-default,
+   .ui-widget-content .ui-state-default,
+   .ui-widget-header .ui-state-default,
+   .ui-button,
+   html .ui-button.ui-state-disabled:hover,
+   html .ui-button.ui-state-disabled:active {
+    border: 1px solid #636d87;
+    border-radius: 50%;
+    background: #191c24;
+    font-weight: normal;
+    color: #636d87;
+    text-align: center;
+  }
+
+  .ui-widget-header {
+    border: 1px solid #636d87;
+    background: #191c24;
+    color: #636d87;
+    font-weight: bold;
+  }
+
+  .ui-widget.ui-widget-content {
+    border: 1px solid #636d87;
+  }
+</style>
+</style>
+
+<body >
+    <section class=" pm vh-100">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-sm-6 text-black">
+
+              <div class="container text-center">
+                {% for message in messages %}
+            
+                <p>
+                  <div class="alert-danger mt-2" style="width :100% " >
+                {{message}}
+                  </div>
+                {% endfor %}  
+                </p>
+            
+              </div>
+            
+      
+             
+      
+              <div class="  d-flex align-items-center h-custom-2 px-5 ms-xl-4 mt-5 pt-5 pt-xl-0 mt-xl-n5">
+      
+                <form style="width: 30rem;" action="{% url 'user_apply_leave' user.id  %}" method="post" enctype="multipart/form-data">
+                  {% csrf_token %}
+                  <h1 class="text-center">Apply Leave</h1>
+      
+                  <h3 class="fw-normal text-center text-white mb-3 pb-3" style="letter-spacing: 1px;">Log in</h3>
+      
+                  <div class="form-outline mb-4">
+                    <p class="text-center">FROM</p>
+                    <input type="date" id="demo" name="from" class="form-control form-control-lg" />
+                   
+                  </div>
+                  
+                  <div class="form-outline mb-4">
+                    <p class="text-center">TO</p>
+                    <input type="date" id="demo1" name="to"  class="form-control form-control-lg" />
+                   
+                  </div>
+
+                  <input class="m-2" type="radio" id="half" name="haful" value="half Day">
+                  <label id="half" >Half day</label>
+                  <input class="m-2" type="radio" id="full" name="haful" value="full Day" checked="checked">
+                  <label id="full">Full day</label>
+
+                  <div class="row">
+                    <div class="container">
+                      <div class="text-left mt-5  ">Reason</div>
+                      <textarea autocomplete="off" type="text" name="reason" class="form-control mt-2 text-dark"
+                      style="border-radius:5px;height: 100px;" id="reason" placeholder="Leave Reason" required></textarea>
+                    </div>
+                  </div>
+
+                  
+                  
+                 
+
+                  
+
+      
+                  <div class="pt-1 mb-4">
+                    <button class="btn btn-dark btn-lg btn-block form-control" type="submit">Apply</button>
+                  </div>
+      
+                 
+                 
+                </form>
+      
+              </div>
+      
+            </div>
+          </div>
+        </div>
+      </section>
+</div>
+
+
+<script>
+  var date = new Date();
+  var tdate = date.getDate();
+  var month = date.getMonth() +1 ;
+  if(tdate < 10){
+    tdate = "0" + tdate
+  }
+  if(month < 10){
+    month = "0" + month;
+  }
+  var year = date.getFullYear();
+  var mindate = year + "-" + month + "-" + tdate ;
+  document.getElementById("demo").setAttribute('min', mindate)
+  document.getElementById("demo1").setAttribute('min', mindate)
+  console.log(mindate);
+
+
+
+
+</script>
+
+<script>
+
+  
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- <script>
+
+
+
+
+
+
+    document.getElementById("halful").style.display = "none";
+
+    function myFunction() {
+      var x = document.getElementById("from").value;
+      var y = document.getElementById("to").value;
+      if (x, y == '') {
+        document.getElementById("halful").style.display = "none";
+      }
+      else if (x == y) {
+        document.getElementById("halful").style.display = "block";
+      }
+      else {
+        document.getElementById("halful").style.display = "none";
+      }
+    }
+    $(document).on('click', '#btn-submit', function (e) {
+      e.preventDefault();
+      const swalWithBootstrapButtons = Swal.mixin({
+        customClass: {
+          confirmButton: 'btn btn-success',
+          cancelButton: 'btn btn-danger'
+        },
+        buttonsStyling: true
+      })
+
+      swalWithBootstrapButtons.fire({
+        title: 'Are you sure?',
+        text: " Do you want to apply this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Yes, apply Leave!',
+        cancelButtonText: 'No, cancel!',
+        reverseButtons: true,
+        preConfirm: () => {
+          if (document.getElementById('reason').value) {
+            // Handle return value 
+          } else {
+            Swal.showValidationMessage('reason input missing')
+          }
+          if (document.getElementById('to').value) {
+            // Handle return value 
+          } else {
+            Swal.showValidationMessage('to input missing')
+          }
+          if (document.getElementById('from').value) {
+            // Handle return value 
+          } else {
+            Swal.showValidationMessage('from input missing')
+          }
+        }
+      }).then((result) => {
+        if (result.isConfirmed) {
+          swalWithBootstrapButtons.fire(
+            'Applied',
+            'Your leave has been Applied.',
+            'success'
+          )
+          $('#myForm').submit();
+        } else if (
+          result.dismiss === Swal.DismissReason.cancel
+        ) {
+          swalWithBootstrapButtons.fire(
+            'Cancelled',
+            'Your leave request cancelled',
+            'error'
+          )
+        }
+      })
+    })
+  </script>
+
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script>
+  $(function() {
+      var dtToday = new Date();
+      var month = dtToday.getMonth() + 1;
+      var day = dtToday.getDate();
+      var year = dtToday.getFullYear();
+      if (month < 10)
+          month = '0' + month.toString();
+      if (day < 10)
+          day = '0' + day.toString();
+      var minDate = year + '-' + month + '-' + day;
+      $('.txtDate').attr('min', minDate);
+  })
+</script>
+
+<script>
+  var start = document.getElementById('from');
+  var end = document.getElementById('to');
+
+  start.addEventListener('change', function() {
+    if (start.value)
+        end.min = start.value;
+  }, false);
+  end.addEventLiseter('change', function() {
+    if (end.value)
+        start.max = end.value;
+  }, false);
+</script> -->
+
+{% endblock %}

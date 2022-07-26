@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+<table  class="table text-center  " style="border: 2px solid;">
+    <h2 align="center" >Task Details</h2>
+    <tr>
+        <th>sl.no</th>
+        <th>Task</th>
+        <th>Start date</th>
+        <th>End date</th>
+        <th>status</th>
+        <th>Action</th>
+       
+        <!-- <th>Action</th> -->
+    </tr>
+    {% for p in std %}
+   <tr>
+        <td>{{forloop.counter}}</td>
+        <td>{{p.task}}</td>
+        <td>{{p.start_date|date:'Y-m-d'}}</td>
+        <td>{{p.end_date|date:'Y-m-d'}}</td>
+        <!-- <td class="text-danger">
+            {{p.status}}</td>
+            <td> -->
+        <td>
+                {% if p.status == 'pending' %}
+                                  <button type="submit" class="btn btn-sm btn-danger btn-icon-text">
+                                      {{p.status}}
+                                  </button>
+              
+                {% elif p.status == 'completed' %}
+                                  <button type="submit" class="btn btn-sm btn-success btn-icon-text">
+                                      {{p.status}}
+                                  </button>
+                                
+                                  {% else %}
+                                  <button type="submit" class="btn btn-sm btn-success btn-icon-text">
+                                      {{p.status}}
+                                  </button>
+                                  </td>
+              
+                {% endif %}
+            <td>
+               
+                
+                {% if p.status == 'pending' %}
+                            <a href="{% url 'click_up' p.id user.id %}" class="btn btn-danger">upload</a>
+                                  
+              
+                {% elif p.status == 'completed ✓' %}
+
+                            <a href="{% url 'click_up' p.id user.id %}" class="btn btn-success">uploaded</a>
+                            <a href="{{ p.file.url }}" download="{{ p.file.url }}" class="btn btn-primary" >download</a>
+                {% else %}
+                            <a href="{% url 'click_up' p.id user.id %}" class="btn btn-success">uploaded</a> 
+                           
+                                                               
+
+                <td>
+                    <a href="{{ p.file.url }}" download="{{ p.file.url }}" class="btn btn-primary" >download</a>
+                    <!-- <a href="" class="btn btn-danger">delete</a> -->
+                    
+                </td>   
+                                  
+                
+
+            </td>                      
+                {% endif %}
+            
+        
+   
+       
+         <!-- <td><a href="" class="btn btn-warning">Edit</a> -->
+        <!--<a href=""class="btn btn-danger" >Delete</a></td> -->
+        
+    </tr>
+    {% endfor %}
+</table>
+
+
+
+{% endblock %}

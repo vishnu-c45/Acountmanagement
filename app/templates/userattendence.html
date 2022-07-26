@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+<div class="container bg-light">
+    <h1>SHOW ATTENDENCE</h1>
+    <table class="table table-stribed">
+        <thead>
+            <tr>
+                <th>sl.no</th>
+                <th>username</th>
+                <th>date</th>>
+                <th>status</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in std %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{i.user}}</td>
+                <td>{{ i.date|date:'Y-m-d' }}</td>
+                <td>
+
+                    {% if i.status == "PRESENT" %}
+									  <button type="submit" class="btn btn-sm btn-success btn-icon-text">
+										  {{i.status}}
+									  </button>
+				  
+									  {% elif i.status == "ABSENT" %}
+									  <button type="submit" class="btn btn-sm btn-danger btn-icon-text">
+										  {{i.status}}
+									  </button>
+									
+									  {% else %}
+									  <button type="submit" class="btn btn-sm btn-warning btn-icon-text">
+										  {{i.status}}
+									  </button>
+									  </td>
+				  
+									  {% endif %}
+
+                
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</div>
+
+</div>
+
+{% endblock %}

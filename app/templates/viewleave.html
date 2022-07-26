@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+<div class="container bg-light">
+    <h1>SHOW STUDENTS DETAILS</h1>
+    <table class="table table-stribed">
+        <thead>
+            <tr>
+                <th>sl.no</th>
+                <th>from date</th>
+                <th>to date</th>
+                <th>status</th>
+                <th>reason</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in std %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ i.from_date|date:'Y-m-d' }}</td>
+                <td>{{ i.to_date|date:'Y-m-d' }}</td>
+                <td>{{ i.reason}}</td>
+                <td>{{ i.leave_status  }}</td>
+                <td>
+
+                    {% if i.status == "approved" %}
+									  <button type="submit" class="btn btn-sm btn-success btn-icon-text">
+										  {{i.status}}
+									  </button>
+				  
+									  {% elif i.status == "rejected" %}
+									  <button type="submit" class="btn btn-sm btn-danger btn-icon-text">
+										  {{i.status}}
+									  </button>
+									
+									  {% else %}
+									  <button type="submit" class="btn btn-sm btn-warning btn-icon-text">
+										  {{i.status}}
+									  </button>
+									  </td>
+				  
+									  {% endif %}
+
+                
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</div>
+
+</div>
+
+{% endblock %}

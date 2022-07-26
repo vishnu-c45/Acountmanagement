@@ -1,0 +1,76 @@
+{% extends 'adminbase.html' %}
+
+{% block content %}
+
+<div class="main-panel">
+    <div class="content-wrapper">
+      <div class="row">
+        <div class="col-md-12 grid-margin">
+          <div class="row">
+            <div class="col-12 col-xl-8 mb-4 mb-xl-0">
+              <!-- <h3 class="font-weight-bold">Notifications</h3> -->
+              
+            </div>
+         
+          </div>
+        </div>
+      </div>
+   
+          <div class="row m-3">
+            <div class="col-md-4 mb-4 stretch-card transparent">
+                <a href="{% url 'viewuser' %}" class="text-decoration-none text-white">
+              <div class="card" style="background-color:rgb(27, 183, 227)">
+                <div class="card-body">
+                  <h4 class="my-3">USERS</h4>
+                  <p class="fs-30 mb-4">{{count2}}</p>
+                  
+                </div>
+            </a>
+              </div>
+            </div>
+            <div class="col-md-4 mb-4 stretch-card transparent">
+              <div class="card " style="background-color: rgb(218, 53, 78);">
+                <a href="{% url 'adminleave' %}" class="text-decoration-none text-white">
+                <div class="card-body">
+                  <h4 class="my-3">Leave Requests</h4>
+                  <p class="fs-30 mb-4">{{count3}}</p> 
+                 
+                </div>
+           </a>
+              </div>
+            </div>
+
+            <div class="col-md-4 mb-4 stretch-card transparent">
+                <div class="card " style="background-color: rgb(9, 239, 120);">
+                  <a href="{% url 'atten' %}" class="text-decoration-none text-white">
+                  <div class="card-body">
+                    <h4 class="my-3">Attendence</h4>
+                    <p class="fs-30 mb-4">{{count4}}</p> 
+                   
+                  </div>
+             </a>
+                </div>
+              </div>
+
+<!-- 
+              <div class="col-md-4 mb-4 stretch-card transparent">
+                <div class="card " style="background-color: rgb(101, 163, 14); margin: 200px;">
+                  <a href="" class="text-decoration-none text-white">
+                  <div class="card-body">
+                    <h4 class="my-3">Task</h4>
+                    <p class="fs-30 mb-4">{{count2}}</p> 
+                   
+                  </div>
+             </a>
+                </div>
+              </div> -->
+
+
+              <img class="img-rounded  mx-auto d-block" src="https://community.nasscom.in/sites/default/files/media/images/sure%20signs%20your%20have%20a%20great%20business%20idea.png">
+
+          </div>
+
+          
+          
+
+{% endblock %}
